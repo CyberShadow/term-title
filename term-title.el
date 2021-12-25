@@ -39,6 +39,7 @@ frame titles in Emacs (see variables `frame-title-format' and
           (sexp   :tag "Dynamic title (see variable `mode-line-format')")))
 
 
+;;;###autoload
 (define-minor-mode term-title-mode
   "Synchronize terminal window titles with the selected Emacs tty frame.
 
