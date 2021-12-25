@@ -49,8 +49,11 @@ normally, the original title is not restored."
   :group 'terminals
   :init-value nil
   (if term-title-mode
-      (add-hook 'post-command-hook 'term-title--update)
-    (remove-hook 'post-command-hook 'term-title--update)))
+      (progn
+        (add-hook 'post-command-hook 'term-title--update)
+        (add-hook 'tty-setup-hook 'term-title--update))
+    (remove-hook 'post-command-hook 'term-title--update)
+    (remove-hook 'tty-setup-hook 'term-title--update)))
 
 (defun term-title--update ()
   "Synchronize terminal window title with the selected Emacs frame, if it is a tty."
